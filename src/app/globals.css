@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: 74, 21, 100;
+  --background: 255, 250, 244;
+  --text: 0, 0, 0;
+  --border: 153, 153, 153;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  color: rgb(var(--text));
+  background: rgb(var(--background));
+  @apply container mx-auto px-4;
+}
+
+header {
+  background: rgb(var(--background));
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  main {
+    @apply py-8;
+  }
+
+  a {
+    @apply hover:underline;
+  }
+
+  p,
+  cite,
+  header,
+  label,
+  input,
+  button {
+    @apply text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl;
+  }
+
+  h1 {
+    @apply text-color-accent font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
+  }
+
+  h2 {
+    @apply text-color-accent font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-center;
+  }
+
+  section {
+    @apply scroll-m-8 md:scroll-m-14 lg:scroll-m-16 2xl:scroll-m-20;
+  }
+}
+
+.accent {
+  color: rgb(var(--accent));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .as-h2 {
+    @apply text-color-accent font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl;
+  }
+}
