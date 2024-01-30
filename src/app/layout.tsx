@@ -27,7 +27,10 @@ export const metadata: Metadata = {
   description: "Надежда Серова - карьерный консультант",
   category: "Business",
   applicationName: "SEROVA.CAREERS",
-  authors: { name: "Aleksey Vokhmin", url: "https://github.com/gosvoh" },
+  authors: [
+    { name: "Aleksey Vokhmin", url: "https://github.com/gosvoh" },
+    { name: "Nadezhda Serova", url: "https://serova.careers" },
+  ],
   icons: "https://serova.careers/favicon.svg",
   robots: "index, follow",
   metadataBase: new URL("https://serova.careers"),
