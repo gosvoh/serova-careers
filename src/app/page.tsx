@@ -113,7 +113,11 @@ const JobFormat = ({
       {children}
       <p className="text-center">Узнать подробности и записаться</p>
       <div className="flex flex-row gap-12 justify-center">
-        <Link href="https://t.me/nadezhda_a_serova" target="_blank">
+        <Link
+          href="https://t.me/nadezhda_a_serova"
+          target="_blank"
+          className="p-2"
+        >
           <Image
             src={Telegram}
             alt="Иконка Telergram"
@@ -122,7 +126,7 @@ const JobFormat = ({
             className={className}
           />
         </Link>
-        <Link href="https://wa.me/+79811257012" target="_blank">
+        <Link href="https://wa.me/+79811257012" target="_blank" className="p-2">
           <Image
             src={WhatsApp}
             alt="Иконка WhatsApp"
