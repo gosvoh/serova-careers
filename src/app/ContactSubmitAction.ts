@@ -1,13 +1,40 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.timeweb.ru",
+  auth: {
+    user: process.env.MAIL_USER!,
+    pass: process.env.MAIL_PASS!,
+  },
+  port: 465,
+  secure: true,
+  dkim: {
+    domainName: "serova.careers",
+    keySelector: "mail",
+    privateKey: process.env.DKIM_PRIVATE_KEY!,
+  },
+});
+
+const exit = (status: number) => {
+  revalidatePath("/");
+  return { status };
+};
 
 export default async function contactSubmitAction(_: any, formData: FormData) {
-  console.log("ContactSubmitAction", formData);
+  const name = formData.get("name");
+  const login = formData.get("login");
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  if (!name || !login) return exit(400);
 
-  revalidatePath("/");
+  await transporter.sendMail({
+    to: process.env.RECEIVE_EMAIL,
+    subject: "[SEROVA.CAREERS] Обратная связь",
+    text: `[${name}] ${login}`,
+    html: `<html><body>[${name}] ${login}</body></html>`,
+  });
 
-  return { status: 200 };
+  return exit(200);
 }
