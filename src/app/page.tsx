@@ -26,6 +26,7 @@ const className = {
     "hidden md:block absolute top-0 left-0 scale-x-[-1] transform -translate-y-[95%] translate-x-2",
     "md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 2xl:w-28 2xl:h-28"
   ),
+  footer: "flex flex-row gap-8 items-center justify-center my-8 flex-wrap",
 };
 
 const ListItem = ({ children }: React.PropsWithChildren) => {
@@ -463,6 +464,21 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer className={className.footer}>
+        <p className="footer-p">
+          Icons by{" "}
+          <Link href="https://www.flaticon.com" target="_blank">
+            Flaticon
+          </Link>
+        </p>
+        <p className="footer-p">2024</p>
+        <p className="footer-p">
+          Created by{" "}
+          <Link href="https://github.com/gosvoh" target="_blank">
+            gosvoh
+          </Link>
+        </p>
+      </footer>
     </>
   );
 }

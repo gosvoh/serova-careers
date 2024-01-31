@@ -46,6 +46,10 @@ header {
     @apply text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl;
   }
 
+  footer {
+    @apply text-gray-400;
+  }
+
   h1 {
     @apply text-color-accent font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
   }
@@ -72,5 +76,9 @@ header {
 @layer components {
   .as-h2 {
     @apply text-color-accent font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl;
+  }
+
+  .footer-p {
+    @apply text-xs md:text-sm xl:text-base;
   }
 }
