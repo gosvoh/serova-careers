@@ -42,7 +42,7 @@ export default function ContactForm(props: { className?: string }) {
     <form
       action={async (formData) => {
         formAction(formData);
-        formRef.current?.reset();
+        if (state.status === 200) formRef.current?.reset();
       }}
       className={cn(
         "border border-color-accent rounded-2xl p-6 flex flex-col gap-4 md:gap-8",
