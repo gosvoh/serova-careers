@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     { name: "Aleksey Vokhmin", url: "https://github.com/gosvoh" },
     { name: "Nadezhda Serova", url: "https://serova.careers" },
   ],
-  icons: "https://serova.careers/favicon.svg",
+  icons: "https://serova.careers/favicon.ico",
   robots: "index, follow",
   metadataBase: new URL("https://serova.careers"),
   creator: "Aleksey Vokhmin",
