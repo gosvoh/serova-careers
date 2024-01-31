@@ -453,13 +453,13 @@ export default function Home() {
         </section>
         <section id="contacts" className={className.section}>
           <h2>Контакты</h2>
-          <div className="flex flex-row gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2.5fr] 2xl:grid-cols-[1fr_3fr] gap-8">
             <Image
               src={Contacts}
               alt="Фотография Надежды Серовой"
-              className="rounded-2xl hidden md:block flex-1"
+              className="rounded-2xl hidden md:block w-full h-full object-cover"
             />
-            <ContactForm className="flex-2" />
+            <ContactForm />
           </div>
         </section>
       </main>
