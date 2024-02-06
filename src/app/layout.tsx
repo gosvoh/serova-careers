@@ -43,12 +43,12 @@ export const metadata: Metadata = {
     description: "Надежда Серова - карьерный консультант",
     images: [
       {
-        url: "https://serova.careers/hero.jpg",
-        secureUrl: "https://serova.careers/hero.jpg",
-        width: 1000,
-        height: 1000,
+        url: "https://serova.careers/og-logo.png",
+        secureUrl: "https://serova.careers/og-logo.png",
+        width: 819,
+        height: 309,
         alt: "SEROVA.CAREERS",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   },
