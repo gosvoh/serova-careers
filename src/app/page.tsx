@@ -112,7 +112,7 @@ const JobFormat = ({
     <ThickBlock className="flex flex-col gap-4 md:gap-8">
       <p className="accent font-bold text-center">{title}</p>
       {children}
-      <p className="text-center">Узнать подробности и записаться</p>
+      <p className="text-center font-bold">Узнать подробности и записаться</p>
       <div className="flex flex-row gap-12 justify-center">
         <Link
           href="https://t.me/nadezhda_a_serova"
@@ -462,7 +462,7 @@ export default function Home() {
         </section>
         <section id="contacts" className={className.section}>
           <h2>Контакты</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2.5fr] 2xl:grid-cols-[1fr_3fr] gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_1.75fr] xl:grid-cols-[1fr_2fr] 2xl:grid-cols-[1fr_2.25fr] gap-8">
             <Image
               src={Contacts}
               alt="Фотография Надежды Серовой"

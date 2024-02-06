@@ -92,6 +92,16 @@ export default function ContactForm(props: { className?: string }) {
           required
         />
       </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message">Сообщение</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          className={cn(className.input, "resize-none")}
+          rows={6}
+        />
+      </div>
       <Turnstile
         siteKey={process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!}
         options={{

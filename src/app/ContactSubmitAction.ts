@@ -18,8 +18,9 @@ export default async function contactSubmitAction(_: any, formData: FormData) {
 
   const name = formData.get("name");
   const login = formData.get("login");
+  const message = formData.get("message");
 
-  if (!name || !login) return exit(400);
+  if (!name || !login || !message) return exit(400);
 
   await nodemailer
     .createTransport({
@@ -36,8 +37,8 @@ export default async function contactSubmitAction(_: any, formData: FormData) {
     .sendMail({
       to,
       subject: "[SEROVA.CAREERS] Обратная связь",
-      text: `[${name}] ${login}`,
-      html: `<html><body>[${name}] ${login}</body></html>`,
+      text: `[${name}] ${login}: ${message}`,
+      html: `<html><body>[${name}] ${login}<br/><br/>${message}</body></html>`,
     });
 
   return exit(200);
