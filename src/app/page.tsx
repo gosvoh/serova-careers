@@ -8,10 +8,10 @@ import WhatsApp from "@/assets/whatsapp.svg";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import ContactForm from "./ContactForm";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 export const revalidate = 60;
 
 const className = {
@@ -145,17 +145,35 @@ const JobFormat = ({
   );
 };
 
-export default function Home() {
+async function Materials() {
   let materials: { [title: string]: string } = {};
 
-  fs.readFile("./uploads/uploads.json", (err, data) => {
-    if (err) return;
-    try {
-      const files: typeof materials = JSON.parse(String(data));
-      materials = files;
-    } catch {}
-  });
+  try {
+    const db = await fs.readFile("./uploads/uploads.json");
+    const files: typeof materials = JSON.parse(String(db));
+    materials = files;
+  } catch {}
 
+  return (
+    <section id="materials" className={className.section}>
+      <h2>Полезные материалы</h2>
+      <div role="list" className="flex flex-col gap-4 items-start">
+        {Object.entries(materials).map(([title, path], i) => (
+          <Link
+            prefetch={false}
+            key={i}
+            href={`/uploads/${path}`}
+            target="_blank"
+          >
+            <ListItem>{title}</ListItem>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
   return (
     <>
       <header className={className.header}>
@@ -449,7 +467,7 @@ export default function Home() {
             </p>
           </JobFormat>
         </section>
-        <section id="materials" className={className.section}>
+        {/* <section id="materials" className={className.section}>
           <h2>Полезные материалы</h2>
           <div role="list" className="flex flex-col gap-4 items-start">
             {Object.entries(materials).map(([title, path], i) => (
@@ -458,7 +476,10 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </section>
+        </section> */}
+        {/* <React.Suspense fallback={<Loading />}> */}
+        <Materials />
+        {/* </React.Suspense> */}
         <section id="contacts" className={className.section}>
           <h2>Контакты</h2>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_1.75fr] xl:grid-cols-[1fr_2fr] 2xl:grid-cols-[1fr_2.25fr] gap-8">
