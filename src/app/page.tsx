@@ -11,18 +11,8 @@ import Link from "next/link";
 import fs from "node:fs";
 import ContactForm from "./ContactForm";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 export const revalidate = 600;
-
-let materials: { [title: string]: string } = {};
-
-fs.readFile("./uploads/uploads.json", (err, data) => {
-  if (err) return;
-  try {
-    const files: typeof materials = JSON.parse(String(data));
-    materials = files;
-  } catch {}
-});
 
 const className = {
   header:
@@ -156,6 +146,16 @@ const JobFormat = ({
 };
 
 export default function Home() {
+  let materials: { [title: string]: string } = {};
+
+  fs.readFile("./uploads/uploads.json", (err, data) => {
+    if (err) return;
+    try {
+      const files: typeof materials = JSON.parse(String(data));
+      materials = files;
+    } catch {}
+  });
+
   return (
     <>
       <header className={className.header}>
