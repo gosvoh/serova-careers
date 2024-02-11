@@ -1,0 +1,38 @@
+name: Build and push Docker image
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Get package info
+        id: package
+        uses: codex-team/action-nodejs-package-info@v1.1
+
+      - name: Docker Build & Push Action
+        uses: mr-smithers-excellent/docker-build-push@v6.2
+        with:
+          image: ${{ secrets.DOCKER_USERNAME }}/${{ steps.package.outputs.name }}
+          tags: ${{ steps.package.outputs.version }}, latest
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: HTTP Request
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.WEBHOOK_URL }}
+          method: POST
+          timeout: 10000
+          contentType: application/json
+          preventFailureOnNoResponse: "true"
