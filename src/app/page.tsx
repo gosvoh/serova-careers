@@ -1,14 +1,27 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import ContactForm from "./ContactForm";
 import About from "@/assets/about.jpg";
+import Contacts from "@/assets/contacts.jpg";
 import Hero from "@/assets/hero.jpg";
+import Origami from "@/assets/origami.svg";
 import Quote from "@/assets/quote.svg";
 import Telegram from "@/assets/telegram.svg";
 import WhatsApp from "@/assets/whatsapp.svg";
-import Origami from "@/assets/origami.svg";
-import Contacts from "@/assets/contacts.jpg";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import fs from "node:fs";
+import ContactForm from "./ContactForm";
+
+export const revalidate = 600;
+
+let materials: { [title: string]: string } = {};
+
+fs.readFile("./uploads/uploads.json", (err, data) => {
+  if (err) return;
+  try {
+    const files: typeof materials = JSON.parse(String(data));
+    materials = files;
+  } catch {}
+});
 
 const className = {
   header:
@@ -140,21 +153,6 @@ const JobFormat = ({
     </ThickBlock>
   );
 };
-
-const materials: { title: string; href: string }[] = [
-  {
-    title: "Инструкция по созданию резюме",
-    href: encodeURI("Инструкция_по_созданию_усилению_резюме.pdf"),
-  },
-  {
-    title: "Бланк оценки. Подходит ли мне вакансия?",
-    href: encodeURI("Бланк_оценки_Подходит_ли_мне_вакансия.pdf"),
-  },
-  {
-    title: "Какие вопросы полезно задать на собеседовании?",
-    href: encodeURI("Собеседование_интересные_вопросы.pdf"),
-  },
-];
 
 export default function Home() {
   return (
@@ -452,10 +450,10 @@ export default function Home() {
         </section>
         <section id="materials" className={className.section}>
           <h2>Полезные материалы</h2>
-          <div role="list" className="flex flex-col gap-4">
-            {materials.map((material, i) => (
-              <Link key={i} href={material.href} target="_blank">
-                <ListItem>{material.title}</ListItem>
+          <div role="list" className="flex flex-col gap-4 items-start">
+            {Object.entries(materials).map(([title, path], i) => (
+              <Link key={i} href={`/uploads/${path}`} target="_blank">
+                <ListItem>{title}</ListItem>
               </Link>
             ))}
           </div>
