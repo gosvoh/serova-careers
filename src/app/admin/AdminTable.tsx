@@ -18,6 +18,7 @@ import {
   notification,
 } from "antd";
 import ruLocale from "antd/locale/ru_RU";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 
@@ -145,29 +146,38 @@ export default function AdminTable({
           pagination={false}
           className="mt-8"
           columns={[
-            { title: "Название", dataIndex: "title" },
+            {
+              title: "Название",
+              render: (_, record) => (
+                <Link
+                  href={`/uploads/${record.path}`}
+                  target="_blank"
+                  prefetch={false}
+                >
+                  {record.title}
+                </Link>
+              ),
+            },
             {
               title: "Действия",
               width: 200,
-              render: (_, record) => {
-                return (
-                  <Space wrap>
-                    <Button
-                      icon={<EditOutlined />}
-                      onClick={() => {
-                        setSelectedFile(record);
-                        setModalOpen(true);
-                      }}
-                    />
-                    <Popconfirm
-                      title="Удалить файл?"
-                      onConfirm={async () => onDelete(record.title)}
-                    >
-                      <Button danger icon={<DeleteOutlined />} />
-                    </Popconfirm>
-                  </Space>
-                );
-              },
+              render: (_, record) => (
+                <Space wrap>
+                  <Button
+                    icon={<EditOutlined />}
+                    onClick={() => {
+                      setSelectedFile(record);
+                      setModalOpen(true);
+                    }}
+                  />
+                  <Popconfirm
+                    title="Удалить файл?"
+                    onConfirm={async () => onDelete(record.title)}
+                  >
+                    <Button danger icon={<DeleteOutlined />} />
+                  </Popconfirm>
+                </Space>
+              ),
             },
           ]}
         />
