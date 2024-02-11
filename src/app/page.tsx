@@ -11,8 +11,7 @@ import Link from "next/link";
 import fs from "node:fs/promises";
 import ContactForm from "./ContactForm";
 
-// export const dynamic = "force-dynamic";
-export const revalidate = 60;
+export const revalidate = 600;
 
 const className = {
   header:
