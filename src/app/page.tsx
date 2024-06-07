@@ -466,19 +466,7 @@ export default function Home() {
             </p>
           </JobFormat>
         </section>
-        {/* <section id="materials" className={className.section}>
-          <h2>Полезные материалы</h2>
-          <div role="list" className="flex flex-col gap-4 items-start">
-            {Object.entries(materials).map(([title, path], i) => (
-              <Link key={i} href={`/uploads/${path}`} target="_blank">
-                <ListItem>{title}</ListItem>
-              </Link>
-            ))}
-          </div>
-        </section> */}
-        {/* <React.Suspense fallback={<Loading />}> */}
         <Materials />
-        {/* </React.Suspense> */}
         <section id="contacts" className={className.section}>
           <h2>Контакты</h2>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_1.75fr] xl:grid-cols-[1fr_2fr] 2xl:grid-cols-[1fr_2.25fr] gap-8">
@@ -498,7 +486,7 @@ export default function Home() {
             Flaticon
           </Link>
         </p>
-        <p className="footer-p">2024</p>
+        <p className="footer-p">{new Date().getFullYear()}</p>
         <p className="footer-p">
           Created by{" "}
           <Link href="https://github.com/gosvoh" target="_blank">
