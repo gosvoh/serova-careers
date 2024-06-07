@@ -63,8 +63,17 @@ export default function ContactForm(props: { className?: string }) {
       ref={formRef}
     >
       <p>
-        Карьерный совет: здесь вы можете оставить запрос или  задать любой
-        вопрос
+        Карьерный совет: здесь вы можете оставить запрос или задать любой вопрос
+      </p>
+      <p>
+        Или отправьте ваше резюме на{" "}
+        <a
+          href="mailto:contact@serova.careers"
+          className="font-semibold accent"
+        >
+          contact@serova.careers
+        </a>{" "}
+        для получения рекомендаций
       </p>
       <div className="flex flex-col gap-2">
         <label htmlFor="name">Ваше имя:</label>
