@@ -1,85 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --accent: 74, 21, 100;
-  --background: 255, 250, 244;
-  --text: 0, 0, 0;
-  --border: 153, 153, 153;
-}
+@theme {
+  --color-bg: #f4efe6;
+  --color-card: #faf6ee;
+  --color-ink: #2a1f2e;
+  --color-ink-soft: #6b5f66;
+  --color-accent: #4a1564;
+  --color-accent-soft: #7a3d9c;
+  --color-blush: #e8d5d8;
+  --color-rule: rgba(74, 21, 100, 0.12);
 
-html,
-body {
-  min-height: 100vh;
-}
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-serif: var(--font-pt-serif), Georgia, serif;
 
-body {
-  color: rgb(var(--text));
-  background: rgb(var(--background));
-  @apply container mx-auto px-4;
-}
+  --shadow-card: 0 1px 0 rgba(74, 21, 100, 0.04),
+    0 12px 40px -20px rgba(74, 21, 100, 0.18);
 
-header {
-  background: rgb(var(--background));
+  --breakpoint-md: 700px;
+  --breakpoint-lg: 900px;
 }
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
-
-  main {
-    @apply py-8;
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
   }
-
-  a {
-    @apply hover:underline;
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-normal text-ink;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
   }
-
-  p,
-  cite,
-  header,
-  label,
-  input,
-  button,
-  textarea {
-    @apply text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl;
-  }
-
-  footer {
-    @apply text-gray-400;
-  }
-
-  h1 {
-    @apply text-color-accent font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl;
-  }
-
-  h2 {
-    @apply text-color-accent font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-center;
-  }
-
-  section {
-    @apply scroll-m-8 md:scroll-m-14 lg:scroll-m-16 2xl:scroll-m-20;
+  h1 em,
+  h2 em,
+  h3 em,
+  h4 em {
+    @apply text-accent font-normal;
   }
 }
 
-.accent {
-  color: rgb(var(--accent));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-@layer components {
-  .as-h2 {
-    @apply text-color-accent font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl;
-  }
-
-  .footer-p {
-    @apply text-xs md:text-sm xl:text-base;
-  }
+.crane {
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--color-accent);
+  -webkit-mask: url("/origami.svg") center / contain no-repeat;
+  mask: url("/origami.svg") center / contain no-repeat;
 }
