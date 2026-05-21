@@ -1,25 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Manrope, PT_Serif } from "next/font/google";
 import "./globals.css";
 
-const evolventa = localFont({
-  src: [
-    { path: "./fonts/Evolventa-Regular.woff", style: "normal", weight: "400" },
-    { path: "./fonts/Evolventa-Bold.woff", style: "bold", weight: "700" },
-    { path: "./fonts/Evolventa-Oblique.woff", style: "italic", weight: "400" },
-    {
-      path: "./fonts/Evolventa-BoldOblique.woff",
-      style: "italic",
-      weight: "700",
-    },
-  ],
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const ptSerif = PT_Serif({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-pt-serif",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",
-  themeColor: "#fffaf4",
+  themeColor: "#f4efe6",
 };
 
 export const metadata: Metadata = {
@@ -85,8 +87,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <body className={evolventa.className}>{children}</body>
+    <html lang="ru" className={`${manrope.variable} ${ptSerif.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
