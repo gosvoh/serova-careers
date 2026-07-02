@@ -14,7 +14,7 @@ export default function ContactSection() {
           aria-hidden
           style={{ width: 300, height: 300 }}
         />
-        <div className="relative grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+        <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
           <div>
             <Crane
               size={48}
@@ -30,7 +30,7 @@ export default function ContactSection() {
               именно вам.
             </p>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex min-w-0 flex-col gap-3">
             <Link
               href={content.contacts.tg}
               target="_blank"
