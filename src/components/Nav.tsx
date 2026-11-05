@@ -1,13 +1,12 @@
 import { Crane, TgIcon } from "@/components/icons";
-import { content } from "@/content";
 import Link from "next/link";
 
 export default function Nav() {
   const links: [string, string][] = [
     ["#about", "Обо мне"],
-    ["#for-whom", "Для кого"],
+    ["#work-on", "Ваш запрос"],
     ["#approach", "Подход"],
-    ["#formats", "Форматы"],
+    ["#videos", "Видео"],
     ["#reviews", "Отзывы"],
     ["#materials", "Материалы"],
   ];
@@ -20,7 +19,7 @@ export default function Nav() {
             Надежда Серова
           </span>
         </a>
-        <nav className="ml-auto hidden gap-6 text-sm lg:flex">
+        <nav className="ml-auto hidden gap-6 text-sm min-[1100px]:flex">
           {links.map(([h, t]) => (
             <a
               key={h}
@@ -32,10 +31,8 @@ export default function Nav() {
           ))}
         </nav>
         <Link
-          href={content.contacts.tg}
-          target="_blank"
-          rel="noreferrer"
-          className="ml-auto inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-[13px] font-semibold text-bg lg:ml-0 lg:px-4.5 lg:text-sm"
+          href="#contact"
+          className="ml-auto inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-[13px] font-semibold text-bg min-[1100px]:ml-0 lg:px-4.5 lg:text-sm"
         >
           <TgIcon size={14} /> Написать
         </Link>

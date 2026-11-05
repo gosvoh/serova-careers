@@ -2,8 +2,10 @@ import AboutSection from "@/components/AboutSection";
 import ApproachSection from "@/components/ApproachSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import ForWhomSection from "@/components/ForWhomSection";
-import FormatsSection from "@/components/FormatsSection";
+import WorkOnSection from "@/components/WorkOnSection";
+import VideosSection from "@/components/VideosSection";
+import FaqSection from "@/components/FaqSection";
+import StructuredData from "@/components/StructuredData";
 import HeroSection from "@/components/HeroSection";
 import MaterialsSection from "@/components/MaterialsSection";
 import Nav from "@/components/Nav";
@@ -12,6 +14,7 @@ import ReviewsSection from "@/components/ReviewsSection";
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         aria-hidden
@@ -30,14 +33,15 @@ export default function Home() {
         />
       </div>
       <Nav />
-      <main className="relative z-10">
+      <main className="relative z-10 overflow-x-clip">
         <HeroSection />
         <AboutSection />
-        <ForWhomSection />
+        <WorkOnSection />
         <ApproachSection />
-        <FormatsSection />
+        <VideosSection />
         <ReviewsSection />
         <MaterialsSection />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />

@@ -13,21 +13,34 @@ function FormatCard({
   wide?: boolean;
 }) {
   const base = "flex min-h-[320px] flex-col p-7 md:min-h-[340px] md:p-8";
-  const skin = fresh
-    ? "rounded-3xl bg-accent text-bg shadow-card border border-transparent"
-    : card;
-  const tag = fresh ? "bg-white/15 text-bg" : "bg-blush text-accent";
-  const sub = fresh ? "text-white/85" : "text-ink-soft";
-  const li = fresh ? "text-white/90" : "";
-  const meta = fresh ? "text-white/70" : "text-ink-soft";
-  const cta = fresh ? "bg-bg text-accent" : "bg-ink text-bg";
+  const theme = fresh
+    ? {
+        skin: "rounded-3xl bg-accent text-bg shadow-card border border-transparent",
+        tag: "bg-white/15 text-bg",
+        sub: "text-white/85",
+        li: "text-white/90",
+        meta: "text-white/70",
+        cta: "bg-bg text-accent",
+        heading: "text-bg",
+        craneStyle: { background: "var(--color-bg)" } as const,
+      }
+    : {
+        skin: card,
+        tag: "bg-blush text-accent",
+        sub: "text-ink-soft",
+        li: "",
+        meta: "text-ink-soft",
+        cta: "bg-ink text-bg",
+        heading: "",
+        craneStyle: undefined,
+      };
   return (
-    <div className={`${skin} ${base}`}>
+    <div className={`${theme.skin} ${base}`}>
       {wide ? (
         <div className="mb-3.5 flex items-baseline justify-between gap-3">
-          <h3 className={`text-[32px] ${fresh ? "text-bg" : ""}`}>{f.title}</h3>
+          <h3 className={`text-[32px] ${theme.heading}`}>{f.title}</h3>
           <span
-            className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${tag}`}
+            className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${theme.tag}`}
           >
             {f.tag}
           </span>
@@ -36,42 +49,36 @@ function FormatCard({
         <>
           <div className="mb-3.5 flex items-center justify-between">
             <span
-              className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${tag}`}
+              className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${theme.tag}`}
             >
               {f.tag}
             </span>
           </div>
           <h3
-            className={`mb-2 text-[32px] md:text-4xl lg:text-[40px] ${
-              fresh ? "text-bg" : ""
-            }`}
+            className={`mb-2 text-[32px] md:text-4xl lg:text-[40px] ${theme.heading}`}
           >
             {f.title}
           </h3>
         </>
       )}
-      <p className={`mb-3.5 text-sm leading-normal ${sub}`}>{f.sub}</p>
+      <p className={`mb-3.5 text-sm leading-normal ${theme.sub}`}>{f.sub}</p>
       <ul className="mb-auto flex list-none flex-col gap-2 p-0">
         {f.bullets.map((b, j) => (
           <li
             key={j}
-            className={`flex items-start gap-2.5 text-[13px] leading-[1.4] ${li}`}
+            className={`flex items-start gap-2.5 text-[13px] leading-[1.4] ${theme.li}`}
           >
-            <Crane
-              size={14}
-              style={fresh ? { background: "var(--color-bg)" } : undefined}
-            />{" "}
-            {b}
+            <Crane size={14} style={theme.craneStyle} /> {b}
           </li>
         ))}
       </ul>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <span className={`text-xs ${meta}`}>{f.meta}</span>
+        <span className={`text-xs ${theme.meta}`}>{f.meta}</span>
         <Link
           href={content.contacts.tg}
           target="_blank"
           rel="noreferrer"
-          className={`rounded-full px-3.5 py-2 text-xs font-semibold ${cta}`}
+          className={`rounded-full px-3.5 py-2 text-xs font-semibold ${theme.cta}`}
         >
           Записаться →
         </Link>

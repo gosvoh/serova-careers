@@ -1,5 +1,5 @@
 import Hero from "@/assets/hero.jpg";
-import { Crane, TgIcon } from "@/components/icons";
+import { Crane } from "@/components/icons";
 import { content } from "@/content";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,34 +13,28 @@ export default function HeroSection() {
       <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-blush px-3.5 py-2 text-xs font-semibold text-accent">
-            <Crane size={16} /> Карьерный консультант · Санкт-Петербург
+            <Crane size={16} /> Онлайн по всему миру
           </div>
-          <h1 className="text-[clamp(44px,9vw,100px)] leading-none tracking-[-0.02em]">
-            Помогаю найти
-            <br />
-            <em>свою</em> карьерную
-            <br />
-            траекторию.
+          <h1 className="text-[clamp(38px,7vw,76px)] leading-[1.05] tracking-[-0.02em]">
+            Надежда Серова — <em>карьерный консультант</em>
           </h1>
           <p className="mt-6 max-w-135 text-[17px] leading-[1.55] text-ink-soft">
-            Бережная работа над резюме, сопроводительными материалами и
-            подготовкой к собеседованию — для студентов, начинающих и опытных
-            специалистов.
+            Помогаю найти свою карьерную траекторию. Бережная работа над резюме,
+            сопроводительными материалами и подготовкой к собеседованию — для
+            начинающих и опытных специалистов любого профиля.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href={content.contacts.tg}
-              target="_blank"
-              rel="noreferrer"
+              href="#contact"
               className="inline-flex items-center gap-2.5 rounded-full bg-accent px-5.5 py-3.5 text-[15px] font-semibold text-bg transition-transform hover:-translate-y-px"
             >
-              <TgIcon /> Написать в Telegram
+              У меня есть индивидуальный запрос
             </Link>
             <a
-              href="#formats"
+              href="#videos"
               className="inline-flex items-center gap-2.5 rounded-full border border-rule px-5.5 py-3.5 text-[15px] font-semibold text-accent transition-transform hover:-translate-y-px"
             >
-              Все форматы →
+              Смотреть мастер-класс →
             </a>
           </div>
           <div className="mt-10 flex flex-wrap gap-7 border-t border-rule pt-7 lg:mt-14 lg:gap-9 lg:pt-8">
@@ -67,10 +61,10 @@ export default function HeroSection() {
             <Crane size={28} />
             <div>
               <div className="text-[11px] text-ink-soft lg:text-xs">
-                Сейчас работаю в
+                Индивидуальный подход
               </div>
               <div className="text-[13px] font-bold text-ink lg:text-sm">
-                Центре Карьеры ИТМО
+                К вашей карьере и жизни
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="flex items-center gap-2.5">
         <Crane size={20} /> serova.careers · {new Date().getFullYear()}
       </div>
-      <div>Санкт-Петербург · онлайн по всему миру</div>
+      <div>Онлайн по всему миру</div>
     </footer>
   );
 }

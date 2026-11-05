@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, PT_Serif } from "next/font/google";
 import "./globals.css";
+import { site } from "@/lib/site";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -25,60 +26,31 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "SEROVA.CAREERS",
-  description: "Надежда Серова - карьерный консультант",
+  title: site.title,
+  description: site.description,
   category: "Business",
   applicationName: "SEROVA.CAREERS",
-  authors: [
-    { name: "Aleksey Vokhmin", url: "https://github.com/gosvoh" },
-    { name: "Nadezhda Serova", url: "https://serova.careers" },
-  ],
-  icons: "https://serova.careers/favicon.ico",
-  robots: "index, follow",
-  metadataBase: new URL("https://serova.careers"),
+  authors: [{ name: site.name, url: site.url }],
+  icons: "/favicon.ico",
+  robots: { index: true, follow: true },
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "/" },
   creator: "Aleksey Vokhmin",
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://serova.careers",
-    title: "SEROVA.CAREERS",
-    description: "Надежда Серова - карьерный консультант",
-    images: [
-      {
-        url: "https://serova.careers/og-logo.png",
-        secureUrl: "https://serova.careers/og-logo.png",
-        width: 819,
-        height: 309,
-        alt: "SEROVA.CAREERS",
-        type: "image/png",
-      },
-    ],
+    url: site.url,
+    siteName: "SEROVA.CAREERS",
+    title: site.title,
+    description: site.description,
+    images: [{ url: "/og-logo.png", width: 819, height: 309, alt: "SEROVA.CAREERS — Надежда Серова", type: "image/png" }],
   },
-  keywords: [
-    "Карьера",
-    "Работа",
-    "Должность",
-    "Карьерная консультация",
-    "Советы о карьере",
-    "HR",
-    "Соискатель",
-    "Первая работа",
-    "Найти работу",
-    "Поиск работы",
-    "Вакансия",
-    "Опыт работы",
-    "Как найти работу",
-    "Резюме",
-    "CV",
-    "Создать резюме",
-    "Конструктор резюме",
-    "Сопроводительное письмо",
-    "Карьера для студентов",
-    "Профориентация",
-    "Карьерные цели",
-    "Карьерные планы",
-    "Карьерная траектория",
-  ],
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/og-logo.png"],
+  },
 };
 
 export default function RootLayout({
